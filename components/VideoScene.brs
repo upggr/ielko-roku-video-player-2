@@ -19,7 +19,7 @@ sub init()
   m.array = invalid
 
   m.UriHandler  = createObject("roSGNode","UriHandler")
-  url = "https://devtools.web.roku.com/videoplayer/xml/categories.xml"
+  url = "http://ielko-video-client.upg.gr/?feed=roku_cats"
   makeRequest({}, url, "GET", 0, "")
   m.UriHandler.observeField("content","onContentSet")
   m.UriHandler.observeField("categorycontent","onCategoryContentSet")
@@ -58,11 +58,11 @@ sub onReadFinished(event as object)
     minutes = position \ 60
     seconds = position MOD 60
     if m.SpringList.content.getChildCount() > 1 then m.SpringList.content.removeChildIndex(1)
-    contentNode = createObject("roSGNode","ContentNode")
-    contentNode.title = "Resume Video (" + minutes.toStr() + " min " + seconds.toStr() + " sec)"
-    m.SpringList.content.appendChild(contentNode)
+'    contentNode = createObject("roSGNode","ContentNode")
+'    contentNode.title = "Resume Video (" + minutes.toStr() + " min " + seconds.toStr() + " sec)"
+'    m.SpringList.content.appendChild(contentNode)
   else
-    if m.SpringList.content.getChildCount() > 1 then m.SpringList.content.removeChildIndex(1)
+'    if m.SpringList.content.getChildCount() > 1 then m.SpringList.content.removeChildIndex(1)
   end if
   m.SpringBoard.content = m.node
   m.SpringList.setFocus(true)

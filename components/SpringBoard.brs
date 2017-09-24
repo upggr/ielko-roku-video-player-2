@@ -11,27 +11,12 @@ sub init()
   m.LabelList     = m.top.findNode("LabelList")
   m.CategoryLabel = m.top.findNode("CategoryLabel")
   m.RuntimeLabel  = m.top.findNode("RuntimeLabel")
-  m.Video.ObserveField("state","OnVideoPlayerStateChange")
   m.Title.font.size = 40
-  m.CategoryLabel.color = "#333333"
-  m.Title.color = "#333333"
-  m.Details.color = "#444444"
-  m.RuntimeLabel.color = "#333333"
+  m.CategoryLabel.color = "#FFFFFF"
+  m.Title.color = "#FFFFFF"
+  m.Details.color = "#FFFFFF"
+  m.RuntimeLabel.color = "#FFFFFF"
 end sub
-
-Sub OnVideoPlayerStateChange()
-  print "SpringBoard.brs - [OnVideoPlayerStateChange]"
-  if m.Video.state = "error"
-    ' error handling
-    m.Video.visible = false
-  else if m.Video.state = "playing"
-    ' playback handling
-  else if m.Video.state = "finished"
-    m.video.visible = false
-    m.SpringDetails.Visible=true
-    m.LabelList.setFocus(true)
-  end if
-End Sub
 
 sub onContentChange(event as object)
   print "onContentChange"
@@ -45,7 +30,8 @@ sub onContentChange(event as object)
   m.Title.text = content.title
   m.Details.text = content.description
   x = m.Details.localBoundingRect()
-  m.RuntimeLabel.text = "Length: " + minutes.toStr() + " minutes " + seconds.toStr() + " seconds"
+  'm.RuntimeLabel.text = "Length: " + minutes.toStr() + " minutes " + seconds.toStr() + " seconds"
+  m.RuntimeLabel.text = "Source : " + content.url
   translation = [m.RuntimeLabel.translation[0], m.Details.translation[1] + x.height + 30]
   m.RuntimeLabel.translation = translation
   m.CategoryLabel.text = content.categories
@@ -62,8 +48,6 @@ sub onContentChange(event as object)
 
   m.Video.content = ContentNode
 end sub
-
-
 
 sub onItemSelected(event as object)
   print "onItemSelected"
@@ -91,7 +75,7 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
           seconds = position MOD 60
           contentNode = createObject("roSGNode","ContentNode")
           contentNode.title = "Resume Video (" + minutes.toStr() + " min " + seconds.toStr() + " sec)"
-          m.LabelList.content.appendChild(contentNode)
+  '        m.LabelList.content.appendChild(contentNode)
           'Write position to registry so that re-opening the channel works
           m.global.registryTask.write = {
             contentid: m.top.content.episodenumber,

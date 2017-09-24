@@ -10,15 +10,15 @@
         vertFocusAnimationStyle="fixedFocusWrap"
         translation="[800,325]"
         itemSize="[600,48]"
-        color="#222222"
-        focusedColor="#222222">
+        color="#ff0000"
+        focusedColor="#ff0000">
         <ContentNode id="Labels" role="content">
-          <ContentNode title="Play from start"/>
+          <ContentNode title="Play"/>
         </ContentNode>
       </LabelList>
 
       <Rectangle
-        color="#111111"
+        color="#000000"
         width="400"
         height="300"
         translation="[293,243]"
@@ -46,11 +46,11 @@
       <Label
         id="RuntimeLabel"
         text="Video Length:"
-        font="font:LargeBoldSystemFont"
+        font="font:SmallBoldSystemFont"
         translation="[300,875]" />
     </Group>
     <Video
-     id="Video"
+      id="Video"
       width="1920"
       height="1080"
       translation="[0,0]"

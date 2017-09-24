@@ -5,15 +5,15 @@
     <RegistryTask id="RegistryTask"/>
 
     <Rectangle
-      color="#DFDFDF"
+      color="#000000"
       width="1920"
       height="1080"
-      opacity=".6"
+      opacity="1"
       translation="[0,0]" />
 
     <Overhang
       showClock="true"
-      clockColor="0x111111"
+      clockColor="0x00FF00"
       logoUri="pkg:/images/Overhang_Logo_HD.png"
       backgroundUri="pkg:/images/Overhang_Background_SD.png"/>
 
