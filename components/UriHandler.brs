@@ -32,6 +32,7 @@ sub go()
     mt = type(msg)
     print "--------------------------------------------------------------------------"
     print "Received event type '"; mt; "'"
+    'updateContent()
     ' If a request was made
     if mt = "roSGNodeEvent"
       if msg.getField()="request"
@@ -178,9 +179,7 @@ sub parseLeaf(job as object)
   str = result.content
   num = result.num
   title = job.context.context.title
-
   xml = CreateObject("roXMLElement")
-
   if xml.parse(result.content)
     if xml.feed <> invalid
       row = CreateObject("roSGNode", "ContentNode")
@@ -189,6 +188,7 @@ sub parseLeaf(job as object)
         if element.getChildElements() <> invalid
           contentNode = CreateObject("roSGNode","ContentNode")
           contentNode.hdposterurl = element@hdImg
+      '    print contentNode.hdposterurl
           contentNode.sdposterurl = element@sdImg
           for each child in element.getchildElements()
             if child.getname() = "title"
@@ -229,7 +229,9 @@ sub parseLeaf(job as object)
       contentAA[m.top.numRowsReceived.toStr()] = row
       m.top.contentCache.addFields(contentAA)
     end if
-  end if
+  else
+  print "error parsing xml"
+end if
 end sub
 
 ' For loading rowlist content
@@ -240,6 +242,7 @@ sub parseResponse(job as object)
   num = result.num
 
   xml = CreateObject("roXMLElement")
+  'print str
   if xml.parse(result.content)
     if xml.category <> invalid
       if xml.category[0].GetName() = "category"

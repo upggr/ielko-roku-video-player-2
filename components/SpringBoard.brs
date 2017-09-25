@@ -31,7 +31,7 @@ sub onContentChange(event as object)
   m.Details.text = content.description
   x = m.Details.localBoundingRect()
   'm.RuntimeLabel.text = "Length: " + minutes.toStr() + " minutes " + seconds.toStr() + " seconds"
-  m.RuntimeLabel.text = "Source : " + content.url
+  m.RuntimeLabel.text = "Visit :  http://ielko.com for status, news and more.."
   translation = [m.RuntimeLabel.translation[0], m.Details.translation[1] + x.height + 30]
   m.RuntimeLabel.translation = translation
   m.CategoryLabel.text = content.categories
