@@ -19,7 +19,7 @@ sub init()
   m.array = invalid
 
   m.UriHandler  = createObject("roSGNode","UriHandler")
-  url = "http://greektvpremium.x-mad.com//?feed=roku_cats"
+  url = "FEEDURL"
 '  url = "https://devtools.web.roku.com/videoplayer/xml/categories.xml"
   makeRequest({}, url, "GET", 0, "")
   m.UriHandler.observeField("content","onContentSet")
